@@ -4,6 +4,7 @@ import racingcar.dto.CarsDto;
 import racingcar.dto.WinnerCarsDto;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final String GAME_RESULT_TITLE = "\n실행 결과";
@@ -17,12 +18,8 @@ public class OutputView {
     }
 
     public static void printCarStatus(CarsDto carsDto) {
-        List<String> carNames = carsDto.getCarNames();
-        List<Integer> carPositions = carsDto.getCarPositions();
-
-        for (int i = 0; i < carNames.size(); i++) {
-            System.out.printf(RESULT_FORMAT, carNames.get(i), buildStringPosition(carPositions.get(i)));
-        }
+        Map<String, Integer> carsStatus = carsDto.getCarsStatus();
+        carsStatus.forEach((name, position) -> System.out.printf(RESULT_FORMAT, name, buildStringPosition(position)));
         System.out.println();
     }
 

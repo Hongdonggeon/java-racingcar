@@ -2,33 +2,26 @@ package racingcar.dto;
 
 import racingcar.domain.car.Car;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class CarsDto {
-    private List<String> carNames;
-    private List<Integer> carPositions;
+    private final Map<String, Integer> carsStatus;
 
-    public CarsDto(List<String> carNames, List<Integer> carPositions) {
-        this.carNames = carNames;
-        this.carPositions = carPositions;
+    public CarsDto(Map<String, Integer> carStatus) {
+        this.carsStatus = carStatus;
     }
 
     public static CarsDto from(List<Car> cars) {
-        List<String> carNames = cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        List<Integer> carPositions = cars.stream()
-                .map(Car::getPosition)
-                .collect(Collectors.toList());
-        return new CarsDto(carNames, carPositions);
+        Map<String, Integer> carStatus = new LinkedHashMap<>();
+        for (Car car : cars) {
+            carStatus.put(car.getName(), car.getPosition());
+        }
+        return new CarsDto(carStatus);
     }
 
-    public List<String> getCarNames() {
-        return carNames;
-    }
-
-    public List<Integer> getCarPositions() {
-        return carPositions;
+    public Map<String, Integer> getCarsStatus() {
+        return carsStatus;
     }
 }

@@ -16,8 +16,8 @@ public class Car {
         this.position = new Position(POSITION_INITIALIZATION);
     }
 
-    public boolean isPosition(int positionValue) {
-        return position.compareTo(new Position(positionValue)) == 0;
+    public boolean isPosition(Position position) {
+        return this.position.compareTo(position) == 0;
     }
 
     public void move(NumberGenerator numberGenerator) {
@@ -32,8 +32,8 @@ public class Car {
         return name.getName();
     }
 
-    public int getPosition() {
-        return position.getPosition();
+    public Position getPosition() {
+        return position;
     }
 
     @Override

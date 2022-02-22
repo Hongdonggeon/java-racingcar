@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.CarFactory;
 import racingcar.domain.car.Cars;
+import racingcar.domain.car.Position;
 import racingcar.domain.numbergenerator.MovableNumberGenerator;
 import racingcar.domain.numbergenerator.NonMovableNumberGenerator;
 import racingcar.domain.numbergenerator.NumberGenerator;
@@ -48,7 +49,7 @@ public class CarsTest {
 
         cars.move(numberGenerator);
 
-        assertThat(cars.getMaxPosition()).isEqualTo(1);
+        assertThat(cars.getMaxPosition()).isEqualByComparingTo(new Position(1));
     }
 
     @Test
@@ -56,7 +57,7 @@ public class CarsTest {
         Car car1 = new Car("forky");
         Car car2 = new Car("kun");
         Cars cars = new Cars(Arrays.asList(car1, car2));
-        int position = 1;
+        Position position = new Position(1);
 
         car2.move(new MovableNumberGenerator());
 
@@ -68,7 +69,7 @@ public class CarsTest {
         Car car1 = new Car("forky");
         Car car2 = new Car("kun");
         Cars cars = new Cars(Arrays.asList(car1, car2));
-        int position = 1;
+        Position position = new Position(1);
         NumberGenerator numberGenerator = new MovableNumberGenerator();
 
         cars.move(numberGenerator);

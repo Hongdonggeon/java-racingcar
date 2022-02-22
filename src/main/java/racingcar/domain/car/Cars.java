@@ -4,6 +4,7 @@ import racingcar.domain.numbergenerator.NumberGenerator;
 import racingcar.dto.CarsDto;
 import racingcar.dto.WinnerCarsDto;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,14 +29,14 @@ public class Cars {
         }
     }
 
-    public int getMaxPosition() {
+    public Position getMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
+                .map(Car::getPosition)
+                .max(Comparator.comparing(position -> position))
                 .orElseThrow(() -> new IllegalArgumentException(NOT_EXIST_CAR));
     }
 
-    public List<Car> getSamePositionCar(int position) {
+    public List<Car> getSamePositionCar(Position position) {
         return cars.stream()
                 .filter(car -> car.isPosition(position))
                 .collect(Collectors.toList());

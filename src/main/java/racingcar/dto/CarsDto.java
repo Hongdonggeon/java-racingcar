@@ -16,7 +16,7 @@ public class CarsDto {
     public static CarsDto from(List<Car> cars) {
         Map<String, Integer> carStatus = new LinkedHashMap<>();
         for (Car car : cars) {
-            carStatus.put(car.getName(), car.getPosition());
+            carStatus.put(car.getName(), car.getPosition().getPosition());
         }
         return new CarsDto(carStatus);
     }

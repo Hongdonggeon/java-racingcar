@@ -17,7 +17,7 @@ public class Car {
     }
 
     public boolean isPosition(int positionValue) {
-        return position.isEqual(positionValue);
+        return position.compareTo(new Position(positionValue)) == 0;
     }
 
     public void move(NumberGenerator numberGenerator) {

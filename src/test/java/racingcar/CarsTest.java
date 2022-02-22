@@ -84,7 +84,7 @@ public class CarsTest {
 
         CarsDto carsDto = cars.move(new MovableNumberGenerator());
 
-        assertThat(carsDto.getCarPositions().get(0)).isEqualTo(1);
+        assertThat(carsDto.getCarsStatus().get("kun")).isEqualTo(1);
     }
 
     @Test

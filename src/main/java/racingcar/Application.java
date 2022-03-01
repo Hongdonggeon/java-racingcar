@@ -1,8 +1,7 @@
 package racingcar;
 
 import racingcar.controller.GameController;
-import racingcar.domain.numbergenerator.RandomNumberGenerator;
-import racingcar.dto.CarsDto;
+import racingcar.dto.TotalCarsDto;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -12,12 +11,9 @@ public class Application {
 
         gameController.createCars(InputView.inputCarNames());
         int gameCount = gameController.createGameCount(InputView.inputGameCount());
-
         OutputView.printGameResultTitle();
-        for (int i = 0; i < gameCount; i++) {
-            CarsDto carsDto = gameController.move(new RandomNumberGenerator());
-            OutputView.printCarStatus(carsDto);
-        }
-        OutputView.printWinner(gameController.judgeWinner());
+        TotalCarsDto totalCarsDto = gameController.play(gameCount);
+        OutputView.printTotalCarStatus(totalCarsDto.getCarsDtos());
+        OutputView.printWinner(totalCarsDto.getWinnerCarsDto());
     }
 }

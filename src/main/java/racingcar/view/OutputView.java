@@ -17,10 +17,17 @@ public class OutputView {
         System.out.println(GAME_RESULT_TITLE);
     }
 
+    public static void printTotalCarStatus(List<CarsDto> carsDtos) {
+
+        for (CarsDto carsDto : carsDtos) {
+            printCarStatus(carsDto);
+            System.out.println();
+        }
+    }
+
     public static void printCarStatus(CarsDto carsDto) {
         Map<String, Integer> carsStatus = carsDto.getCarsStatus();
         carsStatus.forEach((name, position) -> System.out.printf(RESULT_FORMAT, name, buildStringPosition(position)));
-        System.out.println();
     }
 
     private static String buildStringPosition(int position) {
